@@ -84,8 +84,8 @@
             fclose($csv);
             
                 foreach($flowers as $rs):
-                    $strpath1 = 'flower/'.$rs[0].'-1.jpg';
-                    $strpath2 = 'flower/'.$rs[0].'-2.jpg';
+                    $strpath1 = 'image/'.$rs[0].'-1.jpg';
+                    $strpath2 = 'image/'.$rs[0].'-2.jpg';
     
                    
                 ?>

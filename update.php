@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
 
     // Xử lý upload ảnh
-    $imagePath1 = 'flower/'.$id.'-1.jpg';
-    $imagePath2 = 'flower/'.$id.'-2.jpg';
+    $imagePath1 = 'image/'.$id.'-1.jpg';
+    $imagePath2 = 'image/'.$id.'-2.jpg';
     if (file_exists($imagePath1)) {
         // Xóa file
         if (unlink($imagePath1)) {
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Ảnh không tồn tại: $imagePath";
     }
     if (!empty($_FILES['image1']['name'])) {
-        $targetDir = "flower/";
+        $targetDir = "image/";
         $imagePath1 = $targetDir . $id.'-1.jpg';
         if (!move_uploaded_file($_FILES['image1']['tmp_name'], $imagePath1)) {
             echo "Lỗi khi tải ảnh 1 lên.";
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $imagePath2 = '';
     if (!empty($_FILES['image2']['name'])) {
-        $targetDir = "flower/";
+        $targetDir = "image/";
         $imagePath2 = $targetDir . $id.'-2.jpg';
         if (!move_uploaded_file($_FILES['image2']['tmp_name'], $imagePath2)) {
             echo "Lỗi khi tải ảnh 2 lên.";
@@ -79,20 +79,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm hoa mới</title>
+    <title>Form Information and Upload Image</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+        }
+    </style>
 </head>
 <body>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <label for="name">Tên hoa:</label>
-        <input type="text" name="name" id="name" required>
-        <label for="description">Mô tả:</label>
-        <textarea name="description" id="description" required></textarea>
-        <label for="image2">Ảnh 1:</label>
-        <input type="file" name="image1" id="image1">
-       
-        <label for="image2">Ảnh 2:</label>
-        <input type="file" name="image2" id="image2">
-        <button type="submit">Sua</button>
-    </form>
+    <div class="container">
+        <h2 class="text-center mb-4"> Fill your flower info </h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <!-- Họ tên -->
+            <div class="form-group">
+                <label for="fullName">Ten hoa</label>
+                <input type="text" class="form-control" id="fullName" name="name" placeholder="Enter your your flower name" required>
+            </div>
+            <!-- Mo ta -->
+            <div class="form-group">
+                <label for="Description">Mo ta ve hoa cua ban:</label>
+                <input type="text" class="form-control" id="fullName" name="description" placeholder="Enter your flower desc" required>
+            </div>
+            
+            <!-- Upload Ảnh -->
+            <div class="form-group">
+                <label for="profilePicture">Upload Anh 1</label>
+                <input type="file" class="form-control-file" id="profilePicture" name="image1" accept="image/*" required>
+            </div>
+            <!-- Upload Ảnh -->
+            <div class="form-group">
+                <label for="profilePicture">Upload Anh 2</label>
+                <input type="file" class="form-control-file" id="profilePicture" name="image2" accept="image/*" required>
+            </div>
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-block">Them</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

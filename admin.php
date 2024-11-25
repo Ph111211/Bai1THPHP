@@ -16,7 +16,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="hoatest.php">User <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="home.php">User <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="admin.php">Admin</a>
@@ -47,8 +47,8 @@
                 fclose($csv);
             
                 foreach($flowers as $rs):
-                    $strpath1 = 'flower/'.$rs[0].'-1.jpg';
-                    $strpath2 = 'flower/'.$rs[0].'-2.jpg';
+                    $strpath1 = 'image/'.$rs[0].'-1.jpg';
+                    $strpath2 = 'image/'.$rs[0].'-2.jpg';
                  ?>
                     <tr>
                         <td><?php echo$rs[0] ;?></td>
